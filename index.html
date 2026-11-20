@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interior Solution — Мебель на заказ, стеллажи и порошковая покраска в Астане</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111317;
+      --surface: #191d24;
+      --surface-hover: #21262f;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --accent: #e07a22;
+      --accent-hover: #c96814;
+      --border: #2a303c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Шапка */
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(17, 19, 23, 0.92);
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 20px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .logo span { color: var(--accent); }
+    .badge-2gis {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-2gis span { color: #fbbf24; }
+
+    /* Первый экран */
+    .hero {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-tag {
+      display: inline-block; background: rgba(224, 122, 34, 0.14);
+      color: var(--accent); border: 1px solid rgba(224, 122, 34, 0.35);
+      padding: 5px 12px; border-radius: 6px; font-size: 12px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(30px, 5vw, 50px); line-height: 1.15;
+      max-width: 820px; margin-bottom: 20px;
+    }
+    .hero p {
+      color: var(--muted); max-width: 620px; font-size: 16px; margin-bottom: 32px;
+    }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      padding: 15px 28px; border-radius: 8px; font-weight: 600; font-size: 15px;
+      text-decoration: none; cursor: pointer; border: none; transition: 0.2s; display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Факты */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; margin: 40px 0 64px;
+    }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 20px; border-radius: 12px;
+    }
+    .stat-card small { color: var(--muted); font-size: 13px; display: block; margin-bottom: 4px; }
+    .stat-card strong { font-size: 15px; color: #fff; }
+
+    /* Направления */
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(24px, 4vw, 34px); margin-bottom: 10px;
+    }
+    .section-sub { color: var(--muted); margin-bottom: 32px; font-size: 15px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px; margin-bottom: 68px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 24px; border-radius: 14px; display: flex; flex-direction: column;
+      justify-content: space-between; transition: 0.2s;
+    }
+    .card:hover { border-color: var(--accent); background: var(--surface-hover); }
+    .card h3 { font-size: 18px; margin-bottom: 8px; color: #fff; }
+    .card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .card-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .price-tag { font-weight: 600; color: var(--accent); font-size: 15px; }
+    .btn-sm {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .btn-sm:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* Калькулятор / Форма заявки */
+    .calc-section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 28px; margin-bottom: 68px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 32px;
+    }
+    .calc-info h2 { margin-bottom: 14px; }
+    .calc-info p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+    .check-list { list-style: none; }
+    .check-list li {
+      margin-bottom: 10px; font-size: 14px; padding-left: 22px; position: relative;
+    }
+    .check-list li::before {
+      content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: bold;
+    }
+    .form-group { margin-bottom: 14px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%; padding: 12px 14px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-family: inherit; font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    .btn-wa {
+      width: 100%; background: #25D366; color: #0b1a10; font-weight: 700;
+      padding: 15px; font-size: 15px; margin-top: 6px;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    /* Подвал */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 0;
+      color: var(--muted); font-size: 14px; text-align: center;
+    }
+    .demo-banner {
+      margin-top: 14px; display: inline-block; background: rgba(224, 122, 34, 0.12);
+      border: 1px solid rgba(224, 122, 34, 0.3); color: var(--accent);
+      padding: 6px 14px; border-radius: 6px; font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">Interior <span>Solution</span></div>
+    <div class="badge-2gis"><span>★ 5.0</span> в 2ГИС (25 оценок)</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">Производство в Астане • Частным и бизнес-клиентам</div>
+    <h1>Мебель на заказ, торговые стеллажи и полимерная порошковая покраска</h1>
+    <p>Изготавливаем надёжную металлическую и корпусную мебель в стиле лофт, витрины для магазинов и выполняем порошковую окраску металлоизделий под ключ.</p>
+    <div class="cta-row">
+      <a href="#calc" class="btn btn-primary">Рассчитать стоимость</a>
+      <a href="tel:+77782589003" class="btn btn-secondary">+7 (778) 258-90-03</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <small>Адрес производства и офиса</small>
+      <strong>пр. Республики, 76а (1 этаж)</strong>
+    </div>
+    <div class="stat-card">
+      <small>График работы</small>
+      <strong>Пн–Пт / Сб: 09:00 – 18:00</strong>
+    </div>
+    <div class="stat-card">
+      <small>Способы оплаты</small>
+      <strong>Наличный расчёт и безнал через банк</strong>
+    </div>
+  </div>
+
+  <h2>Наши направления</h2>
+  <p class="section-sub">Работаем по индивидуальным размерам и чертежам для домов, офисов, кафе и торговых точек</p>
+
+  <div class="services-grid">
+    <div class="card">
+      <div>
+        <h3>Мебель на заказ (Лофт и корпус)</h3>
+        <p>Столы, консоли, гардеробные системы и мебель на прочном металлокаркасе с износостойким покрытием.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">по размерам</span>
+        <button class="btn-sm" onclick="chooseService('Мебель на заказ')">Заказать расчёт</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Стеллажи и витрины</h3>
+        <p>Открытые и закрытые стеллажи для магазинов, шоурумов, складов и офисов любой конфигурации.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">под ключ</span>
+        <button class="btn-sm" onclick="chooseService('Стеллажи и витрины')">Заказать расчёт</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Полимерная порошковая покраска</h3>
+        <p>Профессиональная полимерная окраска металлоконструкций, профилей, дисков и деталей с высокой стойкостью к сколам.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">от 450 ₸</span>
+        <button class="btn-sm" onclick="chooseService('Полимерная порошковая покраска')">Заказать расчёт</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Торгово-выставочное оборудование</h3>
+        <p>Островки, стойки ресепшн, вешала и презентационные стенды для брендов и торговых центров.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">индивидуально</span>
+        <button class="btn-sm" onclick="chooseService('Торгово-выставочное оборудование')">Заказать расчёт</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Металлическая мебель</h3>
+        <p>Практичная мебель для коммерческих помещений, мастерских, офисов и жилых интерьеров.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">по проекту</span>
+        <button class="btn-sm" onclick="chooseService('Металлическая мебель')">Заказать расчёт</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <h3>Металлоизделия на заказ</h3>
+        <p>Сварка и сборка каркасов, опор, перегородок и нестандартных конструкций по вашему техническому заданию.</p>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag">по чертежу</span>
+        <button class="btn-sm" onclick="chooseService('Металлоизделия на заказ')">Заказать расчёт</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-section" id="calc">
+    <div class="calc-info">
+      <h2>Быстрый расчёт заказа</h2>
+      <p>Укажите, что нужно изготовить или покрасить — заявка сразу откроется в WhatsApp компании для расчёта стоимости и сроков.</p>
+      <ul class="check-list">
+        <li>Работаем с физлицами и компаниями (оплата через банк)</li>
+        <li>Изготовление по вашим размерам, эскизам или фото</li>
+        <li>Собственный цех порошковой покраски в Астане</li>
+      </ul>
+    </div>
+
+    <form onsubmit="sendOrder(event)">
+      <div class="form-group">
+        <label>Ваше имя или компания</label>
+        <input type="text" id="clientName" placeholder="Например, ТОО Астана / Арман" required>
+      </div>
+      <div class="form-group">
+        <label>Что интересует</label>
+        <select id="serviceType">
+          <option value="Мебель на заказ">Мебель на заказ</option>
+          <option value="Стеллажи и витрины">Стеллажи и витрины</option>
+          <option value="Полимерная порошковая покраска">Полимерная порошковая покраска (от 450 ₸)</option>
+          <option value="Торгово-выставочное оборудование">Торгово-выставочное оборудование</option>
+          <option value="Металлическая мебель">Металлическая мебель</option>
+          <option value="Металлоизделия на заказ">Металлоизделия на заказ</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Способ оплаты</label>
+        <select id="payType">
+          <option value="Оплата через банк (безнал)">Оплата через банк (безнал)</option>
+          <option value="Наличный расчёт / перевод">Наличный расчёт / перевод</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Размеры, количество или задача</label>
+        <textarea id="details" rows="3" placeholder="Например: 4 стеллажа 200х100х40 см, чёрный матовый каркас" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-wa">Отправить на расчёт в WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>Interior Solution • г. Астана, проспект Республики, 76а (1 этаж) • +7 (778) 258-90-03</div>
+    <div class="demo-banner">Демо-концепт сайта подготовлен специально для компании Interior Solution</div>
+  </div>
+</footer>
+
+<script>
+  function chooseService(name) {
+    document.getElementById('serviceType').value = name;
+    document.getElementById('calc').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function sendOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('clientName').value;
+    const service = document.getElementById('serviceType').value;
+    const pay = document.getElementById('payType').value;
+    const details = document.getElementById('details').value;
+    const msg = `Здравствуйте, Interior Solution! Хочу запросить расчёт.\nКлиент: ${name}\nНаправление: ${service}\nОплата: ${pay}\nЗадача: ${details}`;
+    window.open(`https://wa.me/77782589003?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
